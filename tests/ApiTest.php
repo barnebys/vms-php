@@ -55,7 +55,7 @@ class ApiTest extends Tests\TestCase
             unlink($testFile);
         }
 
-        $buffer = Images::fetchZip("5d0519851490bb63ec62ae3f", ["api_key" => $_ENV['VMS_ADMIN_API_KEY']]);
+        $buffer = Images::fetchZip("5d0519851490bb63ec62ae3f", ["api_key" => getenv('VMS_ADMIN_API_KEY') || $_ENV['VMS_ADMIN_API_KEY']]);
         $buffer->saveTo($testFile);
 
         $this->assertFileExists($testFile);

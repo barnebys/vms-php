@@ -14,7 +14,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             $dotenv->load(__DIR__ . '/../.env');
         }
 
-        \Vms\Vms::setApiKey($_ENV['VMS_API_KEY']);
+        \Vms\Vms::setApiKey(getenv('VMS_API_KEY') || $_ENV['VMS_API_KEY']);
         //\Vms\Vms::debug();
     }
 }
