@@ -1,7 +1,7 @@
 {
   "name": "barnebys/vms",
   "description": "VMS PHP Client SDK",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "library",
   "keywords": [
     "barnebys",

@@ -1,24 +1,22 @@
 language: php
 php:
-  - '7.2'
-  - '7.3'
-
+- '7.2'
+- '7.3'
 install:
-  - composer install --no-dev
-  - composer require satooshi/php-coveralls:~0.6@stable
-
+- composer install --no-dev
+- composer require satooshi/php-coveralls:~0.6@stable
 before_script:
-  - mkdir -p build/logs
-
+- mkdir -p build/logs
 script:
-  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-
+- vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 after_success:
-  - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php vendor/bin/coveralls -v; fi;'
-
+- sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php vendor/bin/coveralls -v;
+  fi;'
 notifications:
   slack:
     rooms:
       secure: o82QXCNvwkJdJA2vZmfZTGBkCOYtdKBdVAYs593gynBxDMAeYhziY1JTtQZLNxM29j9cxtq/Dupphy3uF4Pk7Shtqa6C+K8so9RpnNO4eScMmAyOqVL4fwlefnnDnZCSA6fuPZcdSvrStS+70UQw6IvZtS3ctYx/scUG2GmRPs0PTMIvmsvAIu38Du2fEmQdDtitiJ2iVQdR3cuwL/liaTZ1aB+9bhVh3mhWKYsQImPjG12OcGFPFyzw1eh8MFhRJomaDEwP4OwJAdSp5vmdPqJ/rI8iO3nGFDhci6rJoQVAR8naSY+vrFd8L6zl3NKLVWROeCWkQQlAKIVnJNFvDWoiRFY5axk7hMNqucUo+lhtmuTSbrY+0SNdAaS24p7Qua+VUUg8ylGzbbMgXztFFDLvfTvVpKM3BwMTgsX7GSi6rCpUDdVD0cuZl5UWZ/podwGcigRgKvykWaQ0pFMf/YPntI74N/WzlABT9vdCSzxEmWKywmjPpQLOc3D3KLOepBZqz1TjqS9uux61RqgaLX1CfARs+4233U4URkwwnL4A+JeKGrdtkPp+8+URg5dIR2ptl3W3iZ27O+z4vrZq6Qs9MYTUSbYpHVCq2w4JWJxB1Eswgd3r0iaWDIYvr1STZZ29zA+M1B9WfGQsvtZt30oVF1300Qw2j9E4nHPnewM=
   on_success: change
   on_failure: always
+env:
+  secure: YPL/Bo5636kpzAW8AImNko2PEQADdHihx1EcN/gZaEF98PlJ0wmuVWQ/dSTB+kFEKgWd7zcE98xul8XGEh3HtUjY4MwHtiNGeNugZRZoVj02dgrpD1lpnaIw3svY7W/vQ1AT3flVCXp2sBdeBdmaNOWjIDSSAM2qLcFifU3cUUWflBRAIT8BIxjCMN6SuBAQDsQIrUZncYvcXe7qqJKZNqLzKzS7hCct4LTw/T6k/gnJsUB1xhUbLc3/svLAm/++Q5CL5cx3oqLaoOa8VSUF3nUtXBgUgBFjOLT6PPFaJFjmtq4vFK3qD44EZlNtrh01q38JwyXzaf51vZvCFhGy047ktE1GugzH9+STPLbYKXcLUTbDBJEVOgT1V+ChCT1LEL3eKkVTGA/Fn7MtirrUAlSEdOvaPZ74pbouPRWFd8aCadqejQyT4p+xWsR5WhovPQkQcL74lHBVThrhEyMcgHqT8MsiTePC6w3O6fGki39YGicR9fR7z7BOlv//kOwkZvDnSgDFs+g4p9bECNG+Q+pVD+Nycgi1JshqLFG2xBBbg6GaQOQwE6ymJWYIiAmVmsenHk0GuDt5erE3R5pElCPq3AX4K9POStUk1sbFLpX+1EQgap2gLC6wZ0VJb4aLH1aCJzm9cflrL87eYa8tMlBGvPZFZ0jvj7xlRsouAIk=
