@@ -1,0 +1,45 @@
+{
+  "name": "barnebys/vms",
+  "description": "VMS PHP Client SDK",
+  "version": "0.0.1",
+  "type": "library",
+  "keywords": [
+    "barnebys",
+    "valuemystuff",
+    "vms",
+    "auctions",
+    "valuation",
+    "appraisal"
+  ],
+  "homepage": "https://www.valuemystuff.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Johan Dahl",
+      "email": "johan.dahl@barnebys.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.2",
+    "symfony/var-dumper": "^4.3",
+    "symfony/dotenv": "^5.0"
+  },
+  "scripts": {
+    "test": ["./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox tests"]
+  },
+  "autoload": {
+    "psr-4": {
+      "Vms\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Vms\\Tests\\": "tests"
+    }
+  }
+}
