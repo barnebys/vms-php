@@ -16,7 +16,7 @@ PHP 7.2.0 or later
 You can install the bindings via [Composer](http://getcomposer.org/). Run the following command:
 
 ```bash
-composer require barnebys/vms-php
+composer require barnebys/vms
 ```
 
 To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading):
@@ -33,7 +33,7 @@ TBD
 ## Getting started
 
 Simple usage looks something like:
-```
+```php
 \Vms\Vms::setApiKey($apiKey');
 
 $valuations = Vms\Valuation::all();
@@ -69,7 +69,7 @@ First set you need to set your api key `\Vms\Vms::setApiKey($apiKey');`
 `$images = \Vms\Images::create([$myImageFile1, $myImageFile2]);`
 
 ### Create a valuation
-```
+```php
 $valuation = \Vms\Valuation::create([
     'title' => 'A painting by Leonardo da Vinci', // string
     'userDescription' => 'Some description', // string
