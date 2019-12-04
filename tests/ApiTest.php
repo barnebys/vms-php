@@ -35,7 +35,8 @@ class ApiTest extends Tests\TestCase
         $testFile1 = __DIR__ . '/data/moo.jpg';
         //$testFile2= __DIR__ . '/data/foo.jpg'; // todo causing payload to big error
 
-        $image = Images::create([$testFile1]);
+        $images = Images::create([$testFile1]);
+        $this->assertEquals(1, count($images->toList()));
     }
 
     public function testFetchImage(): void

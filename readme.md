@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/barnebys/vms-php.svg?branch=master)](https://travis-ci.org/barnebys/vms-php)
+
 # VMS PHP SDK
 
 The VMS PHP library provides convenient access to the VMS API from application written in the 
