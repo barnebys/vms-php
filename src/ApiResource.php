@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 namespace Vms;
 
 use Vms\ApiOperations\Request;
@@ -19,7 +18,7 @@ abstract class ApiResource extends VmsObject
     }
 
     /**
-     * @return string The base URL for the given class.
+     * @return string the base URL for the given class
      */
     public static function baseUrl(): string
     {
@@ -27,11 +26,12 @@ abstract class ApiResource extends VmsObject
     }
 
     /**
-     * @return string The endpoint URI for the given class.
+     * @return string the endpoint URI for the given class
      */
     public static function classUri(): string
     {
         $base = str_replace('.', '/', static::OBJECT_NAME);
+
         return "/${base}";
     }
 
@@ -40,35 +40,33 @@ abstract class ApiResource extends VmsObject
         $client = new ApiClient($this->_opts, static::baseUrl());
         $url = $this->instanceUrl();
 
-        $response = $client->request("get", $url);
+        $response = $client->request('get', $url);
 
         $this->setLastResponse($response);
 
-        if (strstr($response->getHeaderLine("content-type"), "image") ||
-            $response->getHeaderLine("content-type") === 'application/pdf' )
-        {
-            $this->buffer = new Buffer($response->getBody(), $response->getHeaderLine("content-type"));
-        }
-        {
-            $this->refreshFrom($response->getBody());
+        if (strstr($response->getHeaderLine('content-type'), 'image') ||
+            'application/pdf' === $response->getHeaderLine('content-type')) {
+            $this->buffer = new Buffer($response->getBody(), $response->getHeaderLine('content-type'));
         }
 
+        $this->refreshFrom($response->getBody());
 
         return $this;
     }
 
     public static function resourceUrl(?string $id): string
     {
-        if ($id === null) {
+        if (null === $id) {
             $class = get_called_class();
-            $message = "Could not determine which URL to request: "
+            $message = 'Could not determine which URL to request: '
                 . "$class instance has invalid ID: $id";
             throw new Error\InvalidRequest($message, null);
         }
 
         $base = static::classUri();
         $extn = urlencode($id);
-        return rtrim(implode("/", [$base, $extn]), "/");
+
+        return rtrim(implode('/', [$base, $extn]), '/');
     }
 
     public function instanceUrl(): string

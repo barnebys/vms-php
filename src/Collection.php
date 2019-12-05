@@ -1,11 +1,10 @@
 <?php
 declare(strict_types=1);
-
 namespace Vms;
 
 class Collection extends VmsObject implements \IteratorAggregate
 {
-    const OBJECT_NAME = "list";
+    const OBJECT_NAME = 'list';
 
     public $data = [];
 
@@ -14,7 +13,7 @@ class Collection extends VmsObject implements \IteratorAggregate
     protected $_objectName;
 
     protected $_objectMap = [
-        'valuation' => 'valuations'
+        'valuation' => 'valuations',
     ];
 
     public function __construct(string $objectName, array $data)
@@ -32,7 +31,8 @@ class Collection extends VmsObject implements \IteratorAggregate
         $this->_convertDataToObject();
     }
 
-    public function getTotalCount(): int {
+    public function getTotalCount(): int
+    {
         return $this->totalCount;
     }
 
@@ -60,7 +60,7 @@ class Collection extends VmsObject implements \IteratorAggregate
     {
         $array = $this->toArray();
 
-        foreach($array as &$item) {
+        foreach ($array as &$item) {
             if (is_array($item)) {
                 $item = current($item);
             }

@@ -1,10 +1,9 @@
 <?php
 declare(strict_types=1);
-
 namespace Vms;
 
 /**
- * Class Valuation
+ * Class Valuation.
  *
  * @property string $id
  * @property string $title
@@ -29,20 +28,16 @@ namespace Vms;
  * @property string $notes
  * @property string $guaranteeLine
  * @property string $_humanReadbleId
- *
- * @package Vms
  */
-
-
 class Valuation extends ApiResource
 {
-    const OBJECT_NAME = "valuation";
+    const OBJECT_NAME = 'valuation';
 
-    const TYPE_EXPRESS = "EXPRESS";
-    const TYPE_NORMAL = "NORMAL";
+    const TYPE_EXPRESS = 'EXPRESS';
+    const TYPE_NORMAL = 'NORMAL';
 
-    const UNIT_CM = "cm";
-    const UNIT_INCH = "inch";
+    const UNIT_CM = 'cm';
+    const UNIT_INCH = 'inch';
 
     use ApiOperations\All;
     use ApiOperations\Fetch;

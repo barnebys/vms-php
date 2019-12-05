@@ -1,18 +1,14 @@
 <?php
 declare(strict_types=1);
-
 namespace Vms;
 
 /**
- * Class Insurance
+ * Class Insurance.
  *
- * @property integer $value
+ * @property int $value
  * @property bool $wantToInsure
- *
- * @package Vms
  */
-
 class Insurance extends VmsObject
 {
-    const OBJECT_NAME = "Insurance";
+    const OBJECT_NAME = 'Insurance';
 }

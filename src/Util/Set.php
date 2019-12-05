@@ -1,10 +1,9 @@
 <?php
 declare(strict_types=1);
-
 namespace Vms\Util;
 
-use IteratorAggregate;
 use ArrayIterator;
+use IteratorAggregate;
 
 class Set implements IteratorAggregate
 {

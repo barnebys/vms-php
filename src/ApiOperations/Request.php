@@ -1,10 +1,9 @@
 <?php
 declare(strict_types=1);
-
 namespace Vms\ApiOperations;
 
+use GuzzleHttp\Psr7\Response;
 use Vms\ApiClient;
-use \GuzzleHttp\Psr7\Response;
 
 trait Request
 {
@@ -13,12 +12,12 @@ trait Request
         string $url,
         array $params = [],
         array $options = []
-        ) : Response {
+        ): Response {
         $opts = \Vms\Util\RequestOptions::parse($options);
         $client = new ApiClient($opts);
+
         return $client->request($method, $url, $params);
     }
-
 
     protected static function _upload($uri, $paths, array $options = []): Response
     {
@@ -29,12 +28,12 @@ trait Request
 
         foreach ($paths as $path) {
             $multipart[] = [
-                "name" => basename($path),
-                "contents" => fopen($path, "r")
+                'name' => basename($path),
+                'contents' => fopen($path, 'r'),
             ];
         }
 
-        return $client->request("post", $uri, ['multipart' => $multipart]);
+        return $client->request('post', $uri, ['multipart' => $multipart]);
     }
 
     /*

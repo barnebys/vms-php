@@ -1,21 +1,17 @@
 <?php
 declare(strict_types=1);
-
 namespace Vms;
 
 /**
- * Class Dimensions
+ * Class Dimensions.
  *
- * @property integer $width
- * @property integer $height
- * @property integer $length
- * @property integer $depth
+ * @property int $width
+ * @property int $height
+ * @property int $length
+ * @property int $depth
  * @property string $unit
- *
- * @package Vms
  */
-
 class Dimensions extends VmsObject
 {
-    const OBJECT_NAME = "dimensions";
+    const OBJECT_NAME = 'dimensions';
 }

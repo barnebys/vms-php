@@ -1,15 +1,13 @@
 <?php
 declare(strict_types=1);
-
 namespace Vms;
 
-use Psr\Http\Message\RequestInterface;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\Client;
+use GuzzleHttp\Handler\CurlHandler;
+use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
-use Vms\Error;
+use Psr\Http\Message\RequestInterface;
 
 class ApiClient
 {
@@ -25,7 +23,6 @@ class ApiClient
             return $request->withHeader('Authorization', $opts->apiKey);
         }));
 
-
         foreach ($opts->headers as $name => $value) {
             $stack->push(Middleware::mapRequest(function (RequestInterface $request) use ($opts, $name, $value) {
                 return $request->withHeader($name, $value);
@@ -34,7 +31,7 @@ class ApiClient
 
         $client = new Client(array_merge([
             'base_uri' => $opts->apiBase,
-            'handler' => $stack
+            'handler' => $stack,
         ], $opts->config));
 
         /** @var HandlerStack $handler */
@@ -49,13 +46,9 @@ class ApiClient
             );
         }), 'json_decode_middleware');
 
-
         $this->_client = $client;
     }
 
-    /**
-     * @return Client
-     */
     public function getClient(): \GuzzleHttp\Client
     {
         return $this->_client;
@@ -64,7 +57,7 @@ class ApiClient
     public function request($method, $uri, $params = []): Response
     {
         if (isset($params['query'])) {
-            $uri .= "?" . http_build_query($params['query']);
+            $uri .= '?' . http_build_query($params['query']);
             unset($params['query']);
         }
 
@@ -72,15 +65,14 @@ class ApiClient
         if ($response->getStatusCode() >= 400) {
             $json = $response->getBody();
             if ($json instanceof \GuzzleHttp\Psr7\Stream) {
-                throw new Error\Api((string) $json ." [$uri] (" . $response->getStatusCode() . ")");
+                throw new Error\Api((string) $json . " [$uri] (" . $response->getStatusCode() . ')');
             } else {
-                throw new Error\Api($json['error'] . " [$uri] (" . $response->getStatusCode() . ")");
+                throw new Error\Api($json['error'] . " [$uri] (" . $response->getStatusCode() . ')');
             }
         }
 
         return $response;
     }
-
 
     private function buildParams(array $params)
     {
@@ -88,8 +80,8 @@ class ApiClient
             $clientHandler = $this->_client->getConfig('handler');
             // Create a middleware that echoes parts of the request.
             $tapMiddleware = Middleware::tap(function ($request) {
-                echo "Req Content Type: " . $request->getHeaderLine('Content-Type') . PHP_EOL;
-                echo "Req Body: " . $request->getBody() . PHP_EOL;
+                echo 'Req Content Type: ' . $request->getHeaderLine('Content-Type') . PHP_EOL;
+                echo 'Req Body: ' . $request->getBody() . PHP_EOL;
             });
 
             $params['debug'] = Vms::$debug;

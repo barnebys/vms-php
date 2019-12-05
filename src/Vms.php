@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 namespace Vms;
 
 class Vms
@@ -17,7 +16,7 @@ class Vms
     const VERSION = '1.0.0';
 
     /**
-     * @return string The API key used for requests.
+     * @return string the API key used for requests
      */
     public static function getApiKey(): string
     {
@@ -35,7 +34,7 @@ class Vms
     }
 
     /**
-     * Debug the requests
+     * Debug the requests.
      */
     public static function debug(): void
     {

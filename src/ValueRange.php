@@ -1,19 +1,15 @@
 <?php
 declare(strict_types=1);
-
 namespace Vms;
 
 /**
- * Class ValueRange
+ * Class ValueRange.
  *
- * @property integer $from
- * @property integer $to
+ * @property int $from
+ * @property int $to
  * @property bool $wantToSell
- *
- * @package Vms
  */
-
 class ValueRange extends VmsObject
 {
-    const OBJECT_NAME = "valueRange";
+    const OBJECT_NAME = 'valueRange';
 }

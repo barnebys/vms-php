@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 namespace Vms;
 
 use GuzzleHttp\Psr7\Response;
@@ -12,7 +11,7 @@ class VmsObject implements \ArrayAccess, \Countable, \JsonSerializable
 
     public function __construct(?string $id = null)
     {
-        if ($id !== null) {
+        if (null !== $id) {
             $this->_values['id'] = $id;
         }
     }
@@ -29,6 +28,7 @@ class VmsObject implements \ArrayAccess, \Countable, \JsonSerializable
     {
         $obj = new static(isset($values['id']) ? $values['id'] : null);
         $obj->refreshFrom($values);
+
         return $obj;
     }
 
@@ -46,15 +46,15 @@ class VmsObject implements \ArrayAccess, \Countable, \JsonSerializable
 
     public function getValue(): string
     {
-        if(isset($this->_values['data'])) {
+        if (isset($this->_values['data'])) {
             return $this->_values['data'];
         } else {
-            return "";
+            return '';
         }
     }
 
     /**
-     * Get last response
+     * Get last response.
      *
      * @return mixed
      */
@@ -64,9 +64,7 @@ class VmsObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
-     * Set last response
-     *
-     * @param Response $response
+     * Set last response.
      */
     public function setLastResponse(Response $response): void
     {
@@ -77,11 +75,12 @@ class VmsObject implements \ArrayAccess, \Countable, \JsonSerializable
     {
         static $permanentAttributes = null;
 
-        if ($permanentAttributes === null) {
+        if (null === $permanentAttributes) {
             $permanentAttributes = new Util\Set([
                 'id',
             ]);
         }
+
         return $permanentAttributes;
     }
 
@@ -139,18 +138,11 @@ class VmsObject implements \ArrayAccess, \Countable, \JsonSerializable
     public function __set(string $k, $v): void
     {
         if (static::getPermanentAttributes()->includes($k)) {
-            throw new \InvalidArgumentException(
-                "Cannot set $k on this object. HINT: you can't set: " .
-                join(', ', static::getPermanentAttributes()->toArray())
-            );
+            throw new \InvalidArgumentException("Cannot set $k on this object. HINT: you can't set: " . join(', ', static::getPermanentAttributes()->toArray()));
         }
 
-        if ($v === "") {
-            throw new \InvalidArgumentException(
-                'You cannot set \''.$k.'\'to an empty string. '
-                .'We interpret empty strings as NULL in requests. '
-                .'You may set obj->'.$k.' = NULL to delete the property'
-            );
+        if ('' === $v) {
+            throw new \InvalidArgumentException('You cannot set \'' . $k . '\'to an empty string. ' . 'We interpret empty strings as NULL in requests. ' . 'You may set obj->' . $k . ' = NULL to delete the property');
         }
 
         $this->_values[$k] = Util\Util::convertToVmsObject($v);
@@ -169,6 +161,7 @@ class VmsObject implements \ArrayAccess, \Countable, \JsonSerializable
     public function __toString(): string
     {
         $class = get_class($this);
+
         return $class . ' JSON: ' . $this->__toJSON();
     }
 
@@ -176,7 +169,6 @@ class VmsObject implements \ArrayAccess, \Countable, \JsonSerializable
     {
         return json_encode($this->__toArray(true), JSON_PRETTY_PRINT);
     }
-
 
     public function __toArray(bool $recursive = false): array
     {

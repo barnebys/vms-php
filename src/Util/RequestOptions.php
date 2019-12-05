@@ -1,7 +1,5 @@
 <?php
 declare(strict_types=1);
-
-
 namespace Vms\Util;
 
 use Vms\Error;
@@ -25,7 +23,7 @@ class RequestOptions
         $this->config = $config;
     }
 
-    public static function parse(?array $options, array $config = ['timeout'  => 10.0])
+    public static function parse(?array $options, array $config = ['timeout' => 10.0])
     {
         if ($options instanceof self) {
             return $options;
@@ -48,6 +46,7 @@ class RequestOptions
             if (array_key_exists('api_base', $options)) {
                 $base = $options['api_base'];
             }
+
             return new RequestOptions($key, $base, $headers, $config);
         }
 

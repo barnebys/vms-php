@@ -1,29 +1,24 @@
 <?php
 declare(strict_types=1);
-
 namespace Vms;
 
 /**
- * Class Options
+ * Class Options.
  *
  * @property string $systemOk
  * @property string $dbOk
  * @property VmsObject $apiGroups
  * @property Collection $categories
  * @property Collection $currencies
- * @property integer $totalValuationsCount
+ * @property int $totalValuationsCount
  * @property VmsObject $valuationsCountByCategory
- *
- * @package Vms
  */
-
 class Options extends ApiResource
 {
-    const OBJECT_NAME = "Options";
+    const OBJECT_NAME = 'Options';
 
-    public static function fetch( array $opts = []): Options
+    public static function fetch(array $opts = []): Options
     {
-
         $instance = new static(null, $opts);
 
         $url = '/healthCheck';
@@ -31,7 +26,6 @@ class Options extends ApiResource
         $response = static::_staticRequest('get', $url, [], $opts);
 
         $body = $response->getBody();
-
 
         /*
         foreach($body['categories'] as &$name) {
@@ -50,5 +44,4 @@ class Options extends ApiResource
 
         return $instance;
     }
-
 }

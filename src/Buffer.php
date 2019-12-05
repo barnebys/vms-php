@@ -1,19 +1,15 @@
 <?php
 declare(strict_types=1);
-
 namespace Vms;
 
 use GuzzleHttp\Psr7\Stream;
 
 /**
- * Class Buffer
- *
- * @package Vms
+ * Class Buffer.
  */
-
 class Buffer
 {
-    const OBJECT_NAME = "buffer";
+    const OBJECT_NAME = 'buffer';
 
     private $_stream;
 
