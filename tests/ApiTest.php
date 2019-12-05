@@ -70,6 +70,9 @@ class ApiTest extends Tests\TestCase
     public function testFetchAllValuations(): void
     {
         $valuations = Valuation::all();
+        $valuation = $valuations->getIterator()->current();
+        $this->assertInstanceOf(Collection::class, $valuations);
+        $this->assertInstanceOf(Valuation::class, $valuation);
         $this->assertGreaterThan(1, $valuations->count());
     }
 

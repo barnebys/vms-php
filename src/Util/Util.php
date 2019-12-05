@@ -11,18 +11,19 @@ abstract class Util
     {
         $types = [
             /* Data Objects */
-            \Vms\Valuation::OBJECT_NAME => 'Vms\\ImageBuffer',
+            \Vms\ImageBuffer::OBJECT_NAME       => 'Vms\\ImageBuffer',
 
             /* API Objects */
-            \Vms\Valuation::OBJECT_NAME => 'Vms\\Valuation',
-            \Vms\Valuation::OBJECT_NAME => 'Vms\\Images',
+            \Vms\Valuation::OBJECT_NAME         => 'Vms\\Valuation',
+            \Vms\Images::OBJECT_NAME            => 'Vms\\Images',
+            \Vms\Images::OBJECT_NAME_COLLECTION => 'Vms\\Images',
 
             /* Helper Objects */
-            \Vms\Category::OBJECT_NAME => 'Vms\\Category',
-            \Vms\Currency::OBJECT_NAME => 'Vms\\Currency',
-            \Vms\Dimensions::OBJECT_NAME => 'Vms\\Dimensions',
-            \Vms\Insurance::OBJECT_NAME => 'Vms\\Insurance',
-            \Vms\ValueRange::OBJECT_NAME => 'Vms\\ValueRange',
+            \Vms\Category::OBJECT_NAME          => 'Vms\\Category',
+            \Vms\Currency::OBJECT_NAME          => 'Vms\\Currency',
+            \Vms\Dimensions::OBJECT_NAME        => 'Vms\\Dimensions',
+            \Vms\Insurance::OBJECT_NAME         => 'Vms\\Insurance',
+            \Vms\ValueRange::OBJECT_NAME        => 'Vms\\ValueRange',
         ];
 
         if (isset($types[$name])) {

@@ -17,6 +17,7 @@ use Vms\Error;
 class Images extends ApiResource
 {
     const OBJECT_NAME = "image";
+    const OBJECT_NAME_COLLECTION = "images";
 
     use ApiOperations\Fetch;
 

@@ -25,11 +25,6 @@ To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/01-ba
 require_once('vendor/autoload.php');
 ```
 
-
-## Manual Installation
-
-TBD
-
 ## Getting started
 
 Simple usage looks something like:
@@ -38,51 +33,13 @@ Simple usage looks something like:
 
 $valuations = Vms\Valuation::all();
 ```
+## Examples
+
+See the [examples directory](examples) in this repository.
 
 ## Documentation
 
 See the [API Docs](https://backend-docs.vms.sh)
 
-## Examples
 
-First set you need to set your api key `\Vms\Vms::setApiKey($apiKey');`
 
-### Fetch options
-
-`$options = \Vms\Options::fetch();`
-
-#### Available categories
-
-`$options->categories`
-
-#### Available currencies
-
-`$options->categories`
-
-### Fetch a valuation
-`$valuation = \Vms\Valuation::fetch("5d0519851490bb63ec62ae3f");`
-
-### Fetch all valuations (as collection)
-`$valuations = \Vms\Valuation::all();`
-
-### Upload a image
-`$images = \Vms\Images::create([$myImageFile1, $myImageFile2]);`
-
-### Create a valuation
-```php
-$valuation = \Vms\Valuation::create([
-    'title' => 'A painting by Leonardo da Vinci', // string
-    'userDescription' => 'Some description', // string
-    'category' => $categoryName, // string or \Vms\Category
-    'type' => \Vms\Valuation::TYPE_EXPRESS,
-    'images' => $images,  // array of filenames or \Vms\Images
-    'dimensions' => [
-        'width' => 100,
-        'height' => 200,
-        'length' => 90,
-        'depth' => 20,
-        'unit' => \Vms\Valuation::UNIT_CM
-    ],
-    'currency' => $currency // string or \Vms\Currency
-]);
-```

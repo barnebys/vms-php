@@ -6,6 +6,7 @@ namespace Vms;
 /**
  * Class Dimensions
  *
+ * @property integer $width
  * @property integer $height
  * @property integer $length
  * @property integer $depth
