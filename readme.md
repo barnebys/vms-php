@@ -41,5 +41,3 @@ See the [examples directory](examples) in this repository.
 
 See the [API Docs](https://backend-docs.vms.sh)
 
-
-
