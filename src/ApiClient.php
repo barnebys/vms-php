@@ -63,6 +63,11 @@ class ApiClient
 
     public function request($method, $uri, $params = []): Response
     {
+        if (isset($params['query'])) {
+            $uri .= "?" . http_build_query($params['query']);
+            unset($params['query']);
+        }
+
         $response = $this->_client->request(strtoupper($method), $uri, $this->buildParams($params));
         if ($response->getStatusCode() >= 400) {
             $json = $response->getBody();
