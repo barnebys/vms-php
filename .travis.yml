@@ -4,7 +4,7 @@ php:
 - '7.3'
 install:
 - composer install --no-dev
-- composer require satooshi/php-coveralls:~0.6@stable
+- composer require php-coveralls/php-coveralls
 before_script:
 - mkdir -p build/logs
 script:
