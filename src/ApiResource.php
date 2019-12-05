@@ -44,8 +44,10 @@ abstract class ApiResource extends VmsObject
 
         $this->setLastResponse($response);
 
-        if (strstr($response->getHeaderLine("content-type"), "image")) {
-            $this->buffer = new ImageBuffer($response->getBody(), $response->getHeaderLine("content-type"));
+        if (strstr($response->getHeaderLine("content-type"), "image") ||
+            $response->getHeaderLine("content-type") === 'application/pdf' )
+        {
+            $this->buffer = new Buffer($response->getBody(), $response->getHeaderLine("content-type"));
         }
         {
             $this->refreshFrom($response->getBody());

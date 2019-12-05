@@ -11,7 +11,7 @@ abstract class Util
     {
         $types = [
             /* Data Objects */
-            \Vms\ImageBuffer::OBJECT_NAME       => 'Vms\\ImageBuffer',
+            \Vms\Buffer::OBJECT_NAME       => 'Vms\\Buffer',
 
             /* API Objects */
             \Vms\Valuation::OBJECT_NAME         => 'Vms\\Valuation',

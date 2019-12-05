@@ -18,6 +18,12 @@ class ApiTest extends Tests\TestCase
         $this->assertGreaterThan(1, $options->categories->count());
     }
 
+    public function testPDF(): void
+    {
+        $pdf = Pdf::fetch("5d0519851490bb63ec62ae3f");
+        $this->assertEquals($pdf->buffer->getContentType(), "application/pdf");
+    }
+
     /*
     public function testSetDefaultImage(): void
     {

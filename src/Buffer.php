@@ -6,14 +6,14 @@ namespace Vms;
 use GuzzleHttp\Psr7\Stream;
 
 /**
- * Class ImageBuffer
+ * Class Buffer
  *
  * @package Vms
  */
 
-class ImageBuffer
+class Buffer
 {
-    const OBJECT_NAME = "imageBuffer";
+    const OBJECT_NAME = "buffer";
 
     private $_stream;
 
@@ -38,5 +38,11 @@ class ImageBuffer
     public function getContentType(): string
     {
         return $this->_contentType;
+    }
+
+    public function output()
+    {
+        header('Content-Type: ' . $this->getContentType());
+        echo $this->getStream()->getContents();
     }
 }

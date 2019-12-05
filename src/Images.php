@@ -9,7 +9,7 @@ use Vms\Error;
  * Class Images
  *
  * @property string $id
- * @property ImageBuffer $buffer
+ * @property Buffer $buffer
  *
  * @package Vms
  */
@@ -45,13 +45,13 @@ class Images extends ApiResource
         return $collection;
     }
 
-    public static function fetchZip(string $id, array $opts = []): ImageBuffer
+    public static function fetchZip(string $id, array $opts = []): Buffer
     {
         $url = implode("/", [static::classUri(), "all", $id]);
 
         $response = static::_staticRequest('get', $url, [], $opts);
 
-        return new ImageBuffer($response->getBody(), $response->getHeaderLine("content-type"));
+        return new Buffer($response->getBody(), $response->getHeaderLine("content-type"));
     }
 
     public function setDefault($valuationId)
