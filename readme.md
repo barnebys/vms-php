@@ -1,5 +1,5 @@
 
-[![Build Status](https://travis-ci.org/barnebys/vms-php.svg?branch=master)](https://travis-ci.org/barnebys/vms-php)
+[![Latest Stable Version](https://poser.pugx.org/barnebys/vms/v/stable)](https://packagist.org/packages/barnebys/vms) [![Build Status](https://travis-ci.org/barnebys/vms-php.svg?branch=master)](https://travis-ci.org/barnebys/vms-php)
 
 # VMS PHP SDK
 
