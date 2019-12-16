@@ -48,6 +48,8 @@ class VmsObject implements \ArrayAccess, \Countable, \JsonSerializable
     {
         if (isset($this->_values['data'])) {
             return $this->_values['data'];
+        } elseif (1 === count($this->_values)) {
+            return current($this->_values);
         } else {
             return '';
         }
