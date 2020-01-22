@@ -2,13 +2,16 @@
 declare(strict_types=1);
 namespace Vms;
 
+define('VMS_API_BASE_PRODUCTION', 'https://api.valuemystuff.com/core');
+define('VMS_API_BASE_STAGING', 'https://api-core-staging.vms.sh');
+
 class Vms
 {
     // @var string The API key to be used for requests.
     public static $apiKey;
 
     // @var string The base URL for the VMS API.
-    public static $apiBase = 'https://vms.sh';
+    public static $apiBase = VMS_API_BASE_PRODUCTION;
 
     // @var bool debug requests
     public static $debug = false;
@@ -31,6 +34,22 @@ class Vms
     public static function setApiKey($apiKey): void
     {
         self::$apiKey = $apiKey;
+    }
+
+    /**
+     * Sets the staging base URL.
+     */
+    public static function useStaging(): void
+    {
+        self::$apiBase = VMS_API_BASE_STAGING;
+    }
+
+    /**
+     * Sets the production base URL.
+     */
+    public static function useProduction(): void
+    {
+        self::$apiBase = VMS_API_BASE_PRODUCTION;
     }
 
     /**

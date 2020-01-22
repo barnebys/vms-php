@@ -39,5 +39,5 @@ See the [examples directory](examples) in this repository.
 
 ## Documentation
 
-See the [API Docs](https://backend-docs.vms.sh)
+See the [API Docs](https://api.valuemystuff.com/docs/core/)
 
