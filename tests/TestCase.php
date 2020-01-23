@@ -14,11 +14,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
             putenv('VMS_API_KEY=' . $_ENV['VMS_API_KEY']);
             putenv('VMS_ADMIN_API_KEY=' . $_ENV['VMS_ADMIN_API_KEY']);
+            putenv('VMS_ENV=' . $_ENV['VMS_ENV']);
         }
 
         \Vms\Vms::setApiKey(getenv('VMS_API_KEY'));
 
-        if ($_ENV['VMS_ENV'] === 'staging') {
+        if (isset($_ENV['VMS_ENV']) && $_ENV['VMS_ENV'] === 'staging') {
             \Vms\Vms::useStaging();
         }
 
