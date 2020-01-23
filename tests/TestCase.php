@@ -17,7 +17,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
         }
 
         \Vms\Vms::setApiKey(getenv('VMS_API_KEY'));
-        \Vms\Vms::useStaging();
+
+        if ($_ENV['VMS_ENV'] === 'staging') {
+            \Vms\Vms::useStaging();
+        }
+
         //\Vms\Vms::debug();
     }
 }

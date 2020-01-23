@@ -2,7 +2,8 @@
 declare(strict_types=1);
 namespace Vms;
 
-define('VMS_API_BASE_PRODUCTION', 'https://api.valuemystuff.com/core');
+// todo make it work with proxy
+define('VMS_API_BASE_PRODUCTION', 'https://api-core.valuemystuff.com');
 define('VMS_API_BASE_STAGING', 'https://api-core-staging.vms.sh');
 
 class Vms
